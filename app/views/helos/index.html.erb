@@ -1,0 +1,12 @@
+<h1>Helos#index</h1>
+<p><%= @msg %></p>
+<hr>
+
+<table border="1">
+	<% @helos.each do |helo| %>
+	<tr>
+		<td><%= helo.title %></td>
+		<td><%= helo.content %></td>
+	</tr>
+	<% end %>
+</table>
