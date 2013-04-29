@@ -1,11 +1,13 @@
 Wid::Application.routes.draw do
   get "top/index"
-  
   root to: "top#index"
-  get "helos/index"
-  post "helos/index"
-
-
+#  get "helos/index"
+#  post "helos/index"
+  get "abouts" => "top#about", as: "about"
+  get "lesson/:action(/:name)" => "lesson"
+  resources :members do
+    collection { get "search" }
+  end  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
