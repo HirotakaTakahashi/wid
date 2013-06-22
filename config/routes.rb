@@ -1,13 +1,20 @@
 Wid::Application.routes.draw do
-  get "top/index"
+  get "hotels/show"
+
+  get "hotels/index"
+
   root to: "top#index"
-#  get "helos/index"
-#  post "helos/index"
   get "abouts" => "top#about", as: "about"
-  get "lesson/:action(/:name)" => "lesson"
+
   resources :members do
     collection { get "search" }
-  end  
+  end
+  resources "hotels", :path => ''
+
+#OmniAuth
+  match "auth/:provider/callback" => "sessions#callback"
+  match "logout" => "sessions#destroy", :as => :logout
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,5 +1,20 @@
-<% 5.times do |x| %>
-<h2>見出し</h2>
-<p>ここに本文が入ります。
-<%= link_to "もっと読む", "#" %></p>
-<% end %>
+
+<% @page_title = "Top" %>
+
+<table class="list">
+	<tr>
+		<th>背番号</th>
+		<th>ニックネーム</th>
+		<th>氏名</th>
+		<th>操作</th>
+	</tr>
+	<% @hotels.each do |id| %>
+	<tr>
+		<td align="right"><%= link_to id.name, id %></td>
+		<td><%= id.address %></td>
+		<td><%= id.lat %></td>
+		<td><%= id.lng %></td>
+	</tr>
+	<% end %>
+</table>
+

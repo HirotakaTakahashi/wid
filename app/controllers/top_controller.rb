@@ -2,9 +2,6 @@
 
 class TopController < ApplicationController
   def index
-    @message = "こちらはインデックスページです"
-  end
-  def about
-    @message = "おはようございます"
+    @hotels = Hotel.order("id")
   end
 end

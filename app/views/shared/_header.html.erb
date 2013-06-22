@@ -1,10 +1,9 @@
-<%= image_tag("rails.png", size: "50x64", alt: "logo") %>
+<h1><%= link_to 'Japan Hotel Directory', root_path %></h1>
 
 <div class="menubar">
 	<%= menu_link_to 'Top', root_path %>&nbsp;|&nbsp;
-	<%= menu_link_to '会員名簿', :members %>&nbsp;|&nbsp;
+	<%= menu_link_to 'General', "#" %>&nbsp;|&nbsp;
 	<%= menu_link_to 'Hotel', root_path %>&nbsp;|&nbsp;
-	<%= menu_link_to 'Travel', root_path %>&nbsp;|&nbsp;
-	<%= menu_link_to 'Livelihood', root_path %>&nbsp;|&nbsp;
-	<%= menu_link_to 'Gourmet', root_path %>&nbsp;|&nbsp;
+	<%= menu_link_to 'Member', :members %>&nbsp;|&nbsp;
+	<%= menu_link_to 'Life', root_path %>&nbsp;|&nbsp;
 </div>

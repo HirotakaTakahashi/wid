@@ -1,0 +1,14 @@
+<h1>Hotels#show</h1>
+<p>Find me in app/views/hotels/show.html.erb</p>
+ <% range = Hotel.where(lat: @hotels.lat-0.01..@hotels.lat+0.01, lng: @hotels.lng-0.01..@hotels.lng+0.01) %>
+ <% nearIDs = range.map {|m| m.id} 
+    nearLats = range.map {|m| m.lat} 
+    nearLngs = range.map {|m| m.lng} 
+    count = nearIDs.count %>
+<%= count %>
+ <%= nearIDs.each do |idx|
+  puts nearLats[idx]
+end
+%>
+
+<div id="map-canvas"></div>
