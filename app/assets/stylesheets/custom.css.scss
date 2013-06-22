@@ -1,1 +1,46 @@
 @import "bootstrap";
+
+body {
+ text-align:center;
+ background:url("http://australia.vc/bg_head.png") repeat-x;
+}
+
+#header {
+  height:100px;
+}
+
+.menubar {
+  font-size:1.5em;
+  padding-top:13px;
+}
+#container {
+ width:1000px;
+ margin-left:auto;
+ margin-right:auto;
+ text-align:left;
+}
+
+#wrapper {
+ width:800px;
+ float:left;
+}
+
+#leftbar {
+ width:200px;
+ float:left;
+}
+
+#content {
+ width:600px;
+ float:right;
+}
+
+#rightbar {
+ width:200px;
+ float:right;
+}
+
+#footer {
+ width:100%;
+ clear:left;
+}
