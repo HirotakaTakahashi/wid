@@ -1,14 +1,27 @@
-<h1>Hotels#show</h1>
-<p>Find me in app/views/hotels/show.html.erb</p>
- <% range = Hotel.where(lat: @hotels.lat-0.01..@hotels.lat+0.01, lng: @hotels.lng-0.01..@hotels.lng+0.01) %>
- <% nearIDs = range.map {|m| m.id} 
-    nearLats = range.map {|m| m.lat} 
-    nearLngs = range.map {|m| m.lng} 
-    count = nearIDs.count %>
-<%= count %>
- <%= nearIDs.each do |idx|
-  puts nearLats[idx]
-end
-%>
+<div class="hotelName">
+	<%= @hotels.name %>
+</div>
+<div class="summaryWrap">
+	<%= image_tag(@hotels.thumbnail, size: "150x150", class: "thumbnail") %>
+	<table class="summaryText">
+		<tr>
+			<th>Review</th><td>8.9/10</td>
+		</tr>
+		<tr>
+			<th>Review</th><td>8.9/10</td>
+		</tr>
+		<tr>
+			<th>Review</th><td>8.9/10</td>
+		</tr>
+		<tr>
+			<th>Review</th><td>8.9/10</td>
+		</tr>
+	</table>
+</div>
+<% doc = Nokogiri::XML(open("http://jws.jalan.net/APIAdvance/StockSearch/V1/?key=vir13f526be34e&s_area=137412&stay_date=20130813&stay_count=3&adult_num=2&count=1")) %>
+<%= doc.xpath('//PlanName').each do |node|
+  puts node.text
+end %>
 
+<input type="checkbox" id="cb" onClick="cb_changed()" />周辺のホテル
 <div id="map-canvas"></div>

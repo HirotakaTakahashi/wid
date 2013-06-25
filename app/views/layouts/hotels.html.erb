@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+require 'open-uri'
+require 'nokogiri'
+
 <html>
 <head>
   <title><%= page_title %></title>
@@ -20,24 +23,53 @@ function initialize() {
   var marker = new google.maps.Marker({
       position: myLatlng,
       map: map,
-      title: 'Hello World!'
+      icon: 'http://australia.vc/marker.png'
   });
   
   //周辺のホテルを検索、範囲を指定
- <% range = Hotel.where(lat: @hotels.lat-0.01..@hotels.lat+0.01, lng: @hotels.lng-0.01..@hotels.lng+0.01) %>
+ <% range = Hotel.where(lat: @hotels.lat-0.01..@hotels.lat+0.01, lng: @hotels.lng-0.01..@hotels.lng+0.01).where("id != ?", @hotels.id) %>
 //ID,緯度,軽度を配列で抜き出す
     var nearIDs = <%= range.map {|m| m.id} %>;
     var nearLats = <%= range.map {|m| m.lat} %>;
     var nearLngs = <%= range.map {|m| m.lng} %>;
 	var len = nearIDs.length;
 	var nearHotelMarkers = [];
+	var infowindow = [];
 	for (i=0; i<len; i++){
 	  nearHotelMarkers[i] = new google.maps.Marker({
       position: new google.maps.LatLng(nearLats[i],nearLngs[i]),
       map: map,
-      title: 'aaa'
-  	  });
+  	 });
+  	  
 	}
+	  	 infowindow = new google.maps.InfoWindow({
+            content: 'foobar',
+        });
+        google.maps.event.addListener( nearHotelMarkers[1], 'click', function() {
+            infowindow.open( map, nearHotelMarkers[1] );
+        });
+
+	//周辺のマーカーの操作
+/*	function cb_changed() {
+      // checkboxのElementを取得
+      var cb = document.getElementById("cb");
+
+      if (cb.checked == true) {
+        // チェックボックスがチェックされていればマーカ表示
+        nearHotelMarkers.setVisible(true);
+      } else {
+        // チェックボックスがチェックされていなければ非表示
+        nearHotelMarkers.setVisible(false);
+      }
+	var nearHotelMarkers_check = document.getElementById("nearHotelMarkers_check");
+	google.maps.event.addDomListener(nearHotelMarkers_check, "click", function(){
+		var mMap = null;
+		if (nearHotelMarkers_check.checked === true) {
+			mMap = mapCanvas;
+		}
+		nearHotelMarkers[].setMap(mMap);
+	});
+	*/
 }
 
 function createMarker(opts) {
