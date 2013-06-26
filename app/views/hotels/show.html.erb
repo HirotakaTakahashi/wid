@@ -18,10 +18,7 @@
 		</tr>
 	</table>
 </div>
-<% doc = Nokogiri::XML(open("http://jws.jalan.net/APIAdvance/StockSearch/V1/?key=vir13f526be34e&s_area=137412&stay_date=20130813&stay_count=3&adult_num=2&count=1")) %>
-<%= doc.xpath('//PlanName').each do |node|
-  puts node.text
-end %>
+
 
 <input type="checkbox" id="cb" onClick="cb_changed()" />周辺のホテル
 <div id="map-canvas"></div>

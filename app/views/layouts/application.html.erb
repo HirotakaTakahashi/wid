@@ -6,6 +6,57 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 
+
+<script>
+//Jalan
+var tabs = [
+	'tab1',
+	'tab2'
+];
+
+function initNavi (){
+	preloadImage();
+	initAreaPulldown();
+	swapLayer('tab1');
+}
+
+function preloadImage (){
+	var tgt = [
+		'tab1.gif',
+		'tab2.gif',
+		'tab1_ns.gif',
+		'tab2_ns.gif',
+		'tab1_ns_hov.gif',
+		'tab2_ns_hov.gif',
+		'search_btn_over.jpg'
+	];
+	for (var i=0; i<tgt.length; i++){
+		var img = new Image;
+		img.src = 'public/javascripts/' + tgt[i];
+	}
+}
+
+function doSearch (start){
+	$('f').start.value = start;
+	$('searchLead').innerHTML = '<p style="margin-top:100px;text-align:center"><img src="public/javascripts/ajax_load_orange.gif" \/><br />検索中...<\/p>';
+	swapLayer('tab2');
+	var myAjax = new Ajax.Request(
+		'search.cgi',
+		{
+			method: 'post', 
+			postBody: Form.serialize($('f')),
+			onComplete: showResponse
+		}
+	);
+}
+
+function showResponse (req){
+	$('tab2').innerHTML = req.responseText;
+	initLightbox();
+}
+</script>
+<%= javascript_include_tag 'public/javascripts/common.js' %>
+
 </head>
 <body>
 <div id="container">

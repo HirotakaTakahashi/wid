@@ -1,6 +1,6 @@
 Wid::Application.routes.draw do
-  get "hotels/show"
 
+  get "hotels/show"
   get "hotels/index"
 
   root to: "top#index"

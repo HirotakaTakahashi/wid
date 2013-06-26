@@ -1,6 +1,119 @@
-
 <% @page_title = "Top" %>
+<%= date_select(object_name, method, options = {}, heml_options = {}) %>
+<body onLoad="initNavi()">
+<div class="content">
+<form name="frmSearch" method="post" action="http://jws.jalan.net/APILite/HotelSearch/V1/" target="_blank">
+<input type="hidden" name="key" value="vir13f526be34e">
+<h3>地域</h3>
+<div class="forms">
+<table>
+<tr class="input-row">
+	<td class="labels">都道府県</td>
+	<td>
+	<select class="pulldowns" name="pref"  id="pref" onChange="chgBigArea(this)">
+		<option value="">Choose Prefecture</option>
+	</select>	</td>
+</tr>
+<tr class="input-row">
+	<td class="labels">大エリア</td>
+	<td>
+	<select class="pulldowns" name="l_area" id="l_area" onChange="chgSmallArea(this)">
+		<option value="">Choose Area</option>
+	</select>	</td>
+</tr>
 
+<tr class="input-row">
+	<td class="labels">小エリア</td>
+	<td>
+	<select type="hidden" class="pulldowns" name="s_area" id="s_area" onChange="setSmallAreaName(this.selectedIndex)">
+		<option value="" type="hidden" >指定しない</option>
+	</select>	</td>
+</tr>
+</table>
+</div>
+<h3>宿の種類</h3>
+<div class="forms">
+<table>
+<tr class="input-row">
+	<td class="labels">種類</td>
+	<td>
+	<select class="pulldowns" name="h_type">
+		<option value="0" selected>指定しない</option>
+		<option value="1">旅館</option>
+		<option value="2">ペンション・民宿</option>
+		<option value="3">貸別荘・コンドミニアム</option>
+		<option value="4">ホテル・ビジネスホテル</option>
+	</select>	</td>
+</tr>
+</table>
+</div>
+<h3>施設の特徴</h3>
+<div class="forms">
+<table>
+<tr class="input-row">
+	<td class="labels">Bathing</td>
+	<td><p class="checkboxes-in-td"><input name="pub_bath" id="pub_bath" type="checkbox" value="1"> 内湯・大浴場　<input name="onsen" type="checkbox" value="1"> 温泉　<input name="prv_bath" type="checkbox" value="1"> 貸切風呂・貸切露天　<input name="v_bath" type="checkbox" value="1"> 展望風呂　<input name="sauna" type="checkbox" value="1"> サウナ　<input name="jacz" type="checkbox" value="1"> ジャグジー　<input name="mssg" type="checkbox" value="1"> マッサージ　<input name="esthe" type="checkbox" value="1"> 
+	エステ設備</p></td>
+</tr>
+<tr class="input-row">
+	<td class="labels">Recreation</td>
+	<td><p class="checkboxes-in-td"><input name="p_pong" type="checkbox" value="1"> 卓球あり　<input name="r_ski" type="checkbox" value="1"> 貸しスキー　<input name="r_brd" type="checkbox" value="1"> 貸しボード　<input name="o_pool" type="checkbox" value="1"> 屋外プール</p></td>
+</tr>
+<tr class="input-row">
+	<td class="labels">Room</td>
+	<td><p class="checkboxes-in-td">
+		<input name="late_out" type="checkbox" value="1"> Check out later than 11AM</p></td>
+</tr>
+<tr class="input-row">
+	<td class="labels">Others</td>
+	<td><p class="checkboxes-in-td" style="margin-bottom:0px"><input name="parking" type="checkbox" value="1"> Free Parking　<input name="limo" type="checkbox" value="1"> 送迎あり　<input name="pet" type="checkbox" value="1"> ペットＯＫ</td>
+</tr>
+</table>
+</div>
+<h3>Sorting</h3>
+<div class="forms">
+<table>
+<tr class="input-row">
+	<td class="labels">並び順</td>
+	<td>
+	<select class="pulldowns" name="order">
+		<option value="0">指定しない (宿コード順)</option>
+		<option value="1" selected>宿名50音順</option>
+		<option value="2" selected>料金安い順</option>
+		<option value="3">料金高い順</option>
+	</select>
+	</td>
+</tr>
+</table>
+</div>
+<input type="hidden" name="start" value="1" />
+<input type="hidden" name="count" value="10" />
+<input type="hidden" name="pict_size" value="0" />
+<input name="search" id="search" type="submit" value="search" alt="この条件で検索" />
+</div>
+
+<!--
+<div class="content">
+<h3>あるいはホテル名で検索</h3>
+<div class="forms">
+<table>
+<tr class="input-row">
+	<td class="labels">ホテル名</td>
+	<td>
+	<input name="hotel_name" type="text" class="textinputs">
+	</td>
+</tr>
+</table>
+</div>
+<p style="text-align:right;margin:30px 0px 0px 0px">
+<input name="search" id="search" type="submit" value="search" alt="この条件で検索" />
+
+
+
+</form>
+
+</div> 
+-->
 <table class="list">
 	<tr>
 		<th>名前</th>

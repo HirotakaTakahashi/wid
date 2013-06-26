@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-require 'open-uri'
-require 'nokogiri'
 
 <html>
 <head>
@@ -9,8 +7,10 @@ require 'nokogiri'
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-    
- <script>
+<script type="text/javascript" language="javascript">
+
+//Google Map
+
 function initialize() {
   var myLatlng = new google.maps.LatLng(<%= @hotels.lat %>,<%= @hotels.lng %>);
   var mapOptions = {
@@ -78,6 +78,7 @@ function createMarker(opts) {
 }
 google.maps.event.addDomListener(window, 'load', initialize);  
 </script>  
+
 </head>
 <body>
 <div id="container">
