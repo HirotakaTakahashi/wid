@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20130621134636) do
     t.string   "name"
     t.string   "thumbnail"
     t.string   "address"
+    t.integer  "price"
     t.float    "lat"
     t.float    "lng"
     t.datetime "created_at", :null => false

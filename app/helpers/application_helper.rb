@@ -1,6 +1,6 @@
 module ApplicationHelper
   def page_title
-    title = "morning Glory"
+    title = "Japan Hotel Directory"
     title = @page_title + " - " + title if @page_title
     title
   end

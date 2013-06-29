@@ -1,11 +1,15 @@
+<% @page_title = @hotels.name %>
 <div class="hotelName">
 	<%= @hotels.name %>
 </div>
+<div class="hotelAddress">
+	<%= @hotels.address %>
+</div>
 <div class="summaryWrap">
-	<%= image_tag(@hotels.thumbnail, size: "150x150", class: "thumbnail") %>
+	<%= image_tag(@hotels.thumbnail, size: "200x200", class: "thumbnail") %>
 	<table class="summaryText">
 		<tr>
-			<th>Review</th><td>8.9/10</td>
+			<th><%= t('hotels.name') %></th><td>8.9/10</td>
 		</tr>
 		<tr>
 			<th>Review</th><td>8.9/10</td>

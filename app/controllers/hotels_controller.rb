@@ -7,4 +7,9 @@ class HotelsController < ApplicationController
     @hotels = Hotel.find(params[:id])
     
   end
+  def search
+    @searchelement = searchElement
+
+  end
+  
 end

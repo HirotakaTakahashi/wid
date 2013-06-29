@@ -7,10 +7,9 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+ <% range = Hotel.where(lat: @hotels.lat-0.01..@hotels.lat+0.01, lng: @hotels.lng-0.01..@hotels.lng+0.01).where("id != ?", @hotels.id) %>
+
 <script type="text/javascript" language="javascript">
-
-//Google Map
-
 function initialize() {
   var myLatlng = new google.maps.LatLng(<%= @hotels.lat %>,<%= @hotels.lng %>);
   var mapOptions = {
@@ -27,7 +26,6 @@ function initialize() {
   });
   
   //周辺のホテルを検索、範囲を指定
- <% range = Hotel.where(lat: @hotels.lat-0.01..@hotels.lat+0.01, lng: @hotels.lng-0.01..@hotels.lng+0.01).where("id != ?", @hotels.id) %>
 //ID,緯度,軽度を配列で抜き出す
     var nearIDs = <%= range.map {|m| m.id} %>;
     var nearLats = <%= range.map {|m| m.lat} %>;
@@ -49,33 +47,13 @@ function initialize() {
             infowindow.open( map, nearHotelMarkers[1] );
         });
 
-	//周辺のマーカーの操作
-/*	function cb_changed() {
-      // checkboxのElementを取得
-      var cb = document.getElementById("cb");
 
-      if (cb.checked == true) {
-        // チェックボックスがチェックされていればマーカ表示
-        nearHotelMarkers.setVisible(true);
-      } else {
-        // チェックボックスがチェックされていなければ非表示
-        nearHotelMarkers.setVisible(false);
-      }
-	var nearHotelMarkers_check = document.getElementById("nearHotelMarkers_check");
-	google.maps.event.addDomListener(nearHotelMarkers_check, "click", function(){
-		var mMap = null;
-		if (nearHotelMarkers_check.checked === true) {
-			mMap = mapCanvas;
-		}
-		nearHotelMarkers[].setMap(mMap);
-	});
-	*/
 }
 
-function createMarker(opts) {
-	var marker = new google.maps.Marker(opts);
-	return marker;
-}
+//function createMarker(opts) {
+//	var marker = new google.maps.Marker(opts);
+//	return marker;
+//}
 google.maps.event.addDomListener(window, 'load', initialize);  
 </script>  
 
@@ -85,7 +63,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 	<div id="header">
 		<%= render "shared/header" %>
 	</div>
-	<div id="bg"><div id ="inner">
+
 	<div id="wrapper">
 		<div id="hotelContent">
 			<% if flash.notice %>
@@ -95,14 +73,13 @@ google.maps.event.addDomListener(window, 'load', initialize);
 		</div>
 	</div>
 	<div id="rightbar">
-		<%= render "shared/rightbar" %>
+		<%= render "shared/rightbar_show" %>
 	</div>
 	<div id="footer">
 		<hr>
 		<%= render "shared/footer" %>
 	</div>
 </div>
-</div>
-</div>
+
 </body>
 </html>

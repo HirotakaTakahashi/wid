@@ -1,0 +1,32 @@
+<% range = Hotel.where(lat: @hotels.lat-0.01..@hotels.lat+0.01, lng: @hotels.lng-0.01..@hotels.lng+0.01).where("id != ?", @hotels.id) %>
+<% name = range.map {|m| m.name} %>
+<% thumbnail = range.map {|m| m.thumbnail} %>
+<% price = range.map {|m| m.price} %>
+<% count = name.count %>
+
+<% simillar = Hotel.where(price: @hotels.price-2000..@hotels.price+2000).where("id != ?", @hotels.id) %>
+<% name2 = simillar.map {|m| m.name} %>
+<% thumbnail2 = simillar.map {|m| m.thumbnail} %>
+<% price2 = simillar.map {|m| m.price} %>
+<% count2 = simillar.count %>
+
+<h3 class="subtitle">Check availavility</h3>
+<div id="checkRateBox">
+	</div>
+
+<h3 class="subtitle">Nearby Hotels</h3>
+<div id="refers">
+<% 0.upto(count-1) do |idx| %>
+<div class="refersWrap">
+<p class="refersName"><%= link_to name[idx], "/1" %></p>
+<%= image_tag(thumbnail[idx], size: "150x150", class: "refers") %>
+</div>
+<% end %>
+</div>
+<h3 class="subtitle">Simillar Hotels</h3>
+<% 0.upto(count2-1) do |idx| %>
+<div class="refersWrap">
+<p class="refersName"><%= name2[idx] %><br />from <%= price2[idx] %>yen per night</p>
+<%= image_tag(thumbnail2[idx], size: "150x150", class: "refers") %>
+</div>
+<% end %>

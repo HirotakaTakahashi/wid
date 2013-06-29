@@ -5,6 +5,10 @@ body {
  background:url("http://australia.vc/bg_head.png") repeat-x;
 }
 
+h1 a{
+  color:#df8f38;
+}
+
 h3 {
   font-size:1.2em;
   line-height:12px;
@@ -24,9 +28,7 @@ h3 {
  text-align:left;
 }
 
-#bg {
-  background:url("http://australia.vc/bg.png");
-}
+
 #wrapper {
  width:800px;
  float:left;

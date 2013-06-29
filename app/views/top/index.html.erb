@@ -1,10 +1,9 @@
 <% @page_title = "Top" %>
-<%= date_select(object_name, method, options = {}, heml_options = {}) %>
+
 <body onLoad="initNavi()">
 <div class="content">
-<form name="frmSearch" method="post" action="http://jws.jalan.net/APILite/HotelSearch/V1/" target="_blank">
+<form name="frmSearch" method="post" action="http://jws.jalan.net/APIAdvance/StockSearch/V1/" target="_blank">
 <input type="hidden" name="key" value="vir13f526be34e">
-<h3>地域</h3>
 <div class="forms">
 <table>
 <tr class="input-row">
@@ -39,10 +38,10 @@
 	<td>
 	<select class="pulldowns" name="h_type">
 		<option value="0" selected>指定しない</option>
-		<option value="1">旅館</option>
-		<option value="2">ペンション・民宿</option>
-		<option value="3">貸別荘・コンドミニアム</option>
-		<option value="4">ホテル・ビジネスホテル</option>
+		<option value="1">Ryokan(Japanese style hotel)</option>
+		<option value="2">Pension・Minshuku(	private home providing lodging for travelers)</option>
+		<option value="3">Rental villa・Condominium</option>
+		<option value="4">Hotel・Business Hotel</option>
 	</select>	</td>
 </tr>
 </table>
@@ -92,28 +91,8 @@
 <input name="search" id="search" type="submit" value="search" alt="この条件で検索" />
 </div>
 
-<!--
-<div class="content">
-<h3>あるいはホテル名で検索</h3>
-<div class="forms">
-<table>
-<tr class="input-row">
-	<td class="labels">ホテル名</td>
-	<td>
-	<input name="hotel_name" type="text" class="textinputs">
-	</td>
-</tr>
-</table>
-</div>
-<p style="text-align:right;margin:30px 0px 0px 0px">
-<input name="search" id="search" type="submit" value="search" alt="この条件で検索" />
 
 
-
-</form>
-
-</div> 
--->
 <table class="list">
 	<tr>
 		<th>名前</th>

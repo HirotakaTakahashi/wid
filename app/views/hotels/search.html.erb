@@ -1,0 +1,7 @@
+
+
+<% uri = @searchelement %>
+<%= print("uri = ", uri, "\n\n") %>
+
+<% doc = REXML::Document.new(open(uri)) %>
+<%= puts doc %>
